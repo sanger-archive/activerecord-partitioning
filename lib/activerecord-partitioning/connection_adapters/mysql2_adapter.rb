@@ -15,6 +15,11 @@ module ActiveRecord::Partitioning
         raise InvalidSchemeError, scheme if scheme.blank?
         execute("ALTER TABLE #{quote_table_name(name)} #{scheme}")
       end
+
+      # Removes all partitions from the given table
+      def unpartition_table(name)
+        execute("ALTER TABLE #{quote_table_name(name)} REMOVE PARTITIONING")
+      end
     end
   end
 end

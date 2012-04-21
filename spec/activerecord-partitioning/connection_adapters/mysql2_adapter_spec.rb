@@ -66,4 +66,11 @@ describe ActiveRecord::Partitioning::ConnectionAdapters::Mysql2Adapter do
       subject.partition_table('table', 'scheme')
     end
   end
+
+  context '#unpartition_table' do
+    it 'performs an ALTER TABLE to remove the partitioning' do
+      subject.should_receive(:execute).with('ALTER TABLE `table` REMOVE PARTITIONING')
+      subject.unpartition_table('table')
+    end
+  end
 end
