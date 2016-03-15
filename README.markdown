@@ -4,7 +4,7 @@ specifically, the mysql2 connection adapter.  *And, yes, this is very very alpha
 
 Install with:
 
-    gem "activerecord-partitioning", "~> 0.0.1"
+    gem "activerecord-partitioning", "~> 0.0.2"
 
 Usage:
 
@@ -23,3 +23,6 @@ The second parameter to `partition_table` is simply the MySQL partition statemen
 Note that `rake db:schema:dump` will output the `partition_table` call for you.
 
 Feel free to fork and submit pull requests.
+
+## Update
+Updated in March 2016 by Martyn Whitwell to support Active Record 4 and support pseudo-composite primary keys.

@@ -2,7 +2,7 @@
 require File.expand_path('../lib/activerecord-partitioning/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Matthew Denner"]
+  gem.authors       = ["Matthew Denner"] # updated by Martyn Whitwell March 2016
   gem.email         = ["md12@sanger.ac.uk"]
   gem.description   = %q{Adds support for dumping partitioned tables to db/schema.rb}
   gem.summary       = %q{Very simple dumping of partitioned tables in MySQL}
@@ -15,9 +15,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Activerecord::Partitioning::VERSION
 
-  gem.add_dependency "activerecord", "~> 3.2.0"
-  gem.add_dependency "activesupport", "~> 3.2.0"
+  gem.add_dependency "activerecord", "~> 4.2.6"
+  gem.add_dependency "activesupport", "~> 4.2.6"
 
-  gem.add_development_dependency "rspec", "~> 2.9.0"
+  gem.add_development_dependency "rspec", "~> 3.4.0"
   gem.add_development_dependency "mysql2"
 end

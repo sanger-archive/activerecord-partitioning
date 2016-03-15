@@ -11,6 +11,7 @@ module ActiveRecord::Partitioning
     # Override the standard table dumping behaviour to include the partition dumping
     def table_with_partitioning(table, stream)
       table_without_partitioning(table, stream)
+      dump_primary_keys_of(table, stream) # some partitioned tables have composite primary keys
       dump_partitions_of(table, stream)
       stream
     end
@@ -22,7 +23,17 @@ module ActiveRecord::Partitioning
         stream.puts
       end
     end
-    private :dump_partitions_of
+
+    # Dump the primary keys if they are composite
+    def dump_primary_keys_of(table, stream)
+      keys = @connection.primary_keys(table)
+      if keys.length > 1
+        stream.puts "  set_primary_keys(#{table.inspect}, [#{keys.map(&:inspect).join(", ")}])"
+        stream.puts
+      end
+    end
+
+    private :dump_partitions_of, :dump_primary_keys_of
   end
 end
 
